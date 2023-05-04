@@ -43,6 +43,7 @@ gem "devise", "~> 4.9.2"
 
 gem "bootstrap", "~> 5.2.2"
 gem "jquery-rails"
+gem "active_storage_validations"
 
 # Use Sass to process CSS
 # gem "sassc-rails"

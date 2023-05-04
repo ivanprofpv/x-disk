@@ -1,10 +1,16 @@
 <h2>Строка состояния</h2>
 Логин: <%= current_user.username %><p>
 
-Доступно: <%= @total_space %> Mb<p>
+Доступно: <%= total_space_user %> Mb<p>
+Использовано:  <%= number_to_human_size(@checksize) %> Mb<p>
 
-Загрузить файл:
-
+<%= form_with model: @profile, local: false do |f| %>
+  <div class="errors">
+    <%= render 'shared/errors', resource: @profile %>
+  </div>
+Загрузить файл: <%= f.file_field :attachments %><p>
+<%= f.submit "Upload file", class: 'btn btn-info btn-sm' %>
+<% end %>
 <br>
 
 <h2>Список загруженных файлов</h2>

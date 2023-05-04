@@ -3,27 +3,27 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update ]
 
   def show
-    @total_space = @profile.space
+    # @checksize = ActiveStorage::Blob.where(id: current_user.id).map(&:byte_size).sum
   end
 
   def edit
   end
 
   def update
-    if @profile.update!(profile_params)
-      redirect_to profile_path(@profile), notice: 'Profile was successfully updated.'
+    if @profile.update(profile_params)
+      redirect_to profile_path, notice: 'Profile was successfully updated.'
     else
-      render :edit
+      render :show
     end
+  end
+
+  def set_profile
+    @profile = Profile.with_attached_attachments.find(current_user.id)
   end
 
   private
 
-  def set_profile
-    @profile = current_user.profile || current_user.create_profile
-  end
-
   def profile_params
-    params.require(:profile).permit(:space)
+    params.require(:profile).permit(:space, :attachments)
   end
 end

@@ -11,6 +11,8 @@ module XDisk
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    config.active_storage.replace_on_assign_to_many = false
+
     config.time_zone = 'Moscow'
 
     config.generators do |g|
