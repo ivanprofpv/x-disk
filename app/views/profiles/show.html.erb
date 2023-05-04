@@ -8,7 +8,7 @@
   <div class="errors">
     <%= render 'shared/errors', resource: @profile %>
   </div>
-Загрузить файл: <%= f.file_field :attachments %><p>
+Загрузить файл: <%= f.file_field :attachments, multiple: true %><p>
 <%= f.submit "Upload file", class: 'btn btn-info btn-sm' %>
 <% end %>
 <br>
