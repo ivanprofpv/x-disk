@@ -4,8 +4,16 @@
 Доступно: <%= total_space_user %> Mb<p>
 Использовано:  <%= number_to_human_size(total_space_self_user) %><p>
 
-  <%= link_to 'Upload file', new_profile_userfile_path %>
+  <%= link_to 'Upload file', new_profile_userfile_path, class: 'btn btn-info btn-sm' %>
 
 
 
 <h2>Список загруженных файлов</h2>
+<% @profile.userfiles.each do |file| %>
+<li><%= File.basename(file.attachment.filename.to_s , ".*")%>
+<p><%= link_to 'Download', rails_blob_path(file.attachment, disposition: "attachment"),
+       class: "btn btn-primary" %>
+<p><%= button_to 'Delete', profile_userfile_path(file), method: :delete,
+       class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></li>
+       <br>
+<% end %>

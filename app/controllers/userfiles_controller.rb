@@ -1,8 +1,12 @@
 class UserfilesController < ApplicationController
   before_action :find_profile, only: %i[new create]
+  before_action :find_userfile, only: %i[destroy]
 
   def new
     @userfile = Userfile.new
+  end
+
+  def show
   end
 
   def create
@@ -19,6 +23,12 @@ class UserfilesController < ApplicationController
     end
   end
 
+  def destroy
+    if @userfile.destroy
+      redirect_to profile_path, notice: 'File deleted.'
+    end
+  end
+
   private
 
   def userfile_params
@@ -27,5 +37,9 @@ class UserfilesController < ApplicationController
 
   def find_profile
     @profile = Profile.find_by(params[:id])
+  end
+
+  def find_userfile
+    @userfile = Userfile.find(params[:id])
   end
 end
