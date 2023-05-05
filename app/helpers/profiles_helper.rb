@@ -1,9 +1,9 @@
 module ProfilesHelper
   def total_space_user
-    @total_space = @profile.space
+    @total_space = @profile.space / 1048576
   end
 
-  def total_space_self_user(profile)
-    ActiveStorage::Attachment.joins(:blob).where(record: profile).sum(:byte_size)
+  def total_space_self_user
+    Profile.total_space_self_user_method
   end
 end

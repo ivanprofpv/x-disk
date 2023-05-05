@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2023_05_04_070730) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.integer "space", default: 10
+    t.integer "space", default: 10485760
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
