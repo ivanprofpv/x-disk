@@ -2,7 +2,7 @@
 Логин: <%= current_user.username %><p>
 
 Доступно: <%= total_space_user %> Mb<p>
-Использовано:  <%= number_to_human_size(@checksize) %> Mb<p>
+Использовано:  <%= number_to_human_size(total_space_self_user(@profile)) %><p>
 
 <%= form_with model: @profile, local: false do |f| %>
   <div class="errors">

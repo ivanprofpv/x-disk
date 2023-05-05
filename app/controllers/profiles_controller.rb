@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update ]
 
   def show
-    # @checksize = ActiveStorage::Blob.where(id: current_user.id).map(&:byte_size).sum
   end
 
   def edit
@@ -18,7 +17,7 @@ class ProfilesController < ApplicationController
   end
 
   def set_profile
-    @profile = Profile.with_attached_attachments.find(current_user.id)
+    @profile = current_user.profile || current_user.create_profile
   end
 
   private

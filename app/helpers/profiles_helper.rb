@@ -3,7 +3,7 @@ module ProfilesHelper
     @total_space = @profile.space
   end
 
-  # def total_space_self_user(user)
-  #   user.joins(:attachments_blobs).sum("active_storage_blobs.byte_size")
-  # end
+  def total_space_self_user(profile)
+    ActiveStorage::Attachment.joins(:blob).where(record: profile).sum(:byte_size)
+  end
 end
