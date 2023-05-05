@@ -8,7 +8,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
 
   validate :password_regex
-  validates :email, uniqueness: true
   validates :username, uniqueness: true, length: { maximum: 15 }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
 

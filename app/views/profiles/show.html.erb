@@ -4,13 +4,8 @@
 Доступно: <%= total_space_user %> Mb<p>
 Использовано:  <%= number_to_human_size(total_space_self_user) %><p>
 
-<%= form_with model: @profile, local: false do |f| %>
-  <div class="errors">
-    <%= render 'shared/errors', resource: @profile %>
-  </div>
-Загрузить файл: <%= f.file_field :attachments, multiple: true %><p>
-<%= f.submit "Upload file", class: 'btn btn-info btn-sm' %>
-<% end %>
-<br>
+  <%= link_to 'Upload file', new_profile_userfile_path %>
+
+
 
 <h2>Список загруженных файлов</h2>

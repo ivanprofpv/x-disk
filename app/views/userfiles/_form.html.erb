@@ -1,0 +1,7 @@
+<%= form_with model: [@profile, @userfile], local: false do |f| %>
+  <div class="errors">
+    <%= render 'shared/errors', resource: @userfile %>
+  </div>
+Загрузить файл: <%= f.file_field :attachment %><p>
+<%= f.submit "Upload file", class: 'btn btn-info btn-sm' %>
+<% end %>

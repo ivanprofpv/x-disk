@@ -4,6 +4,6 @@ module ProfilesHelper
   end
 
   def total_space_self_user
-    Profile.total_space_self_user_method
+    Userfile.total_space_self_user_method
   end
 end
