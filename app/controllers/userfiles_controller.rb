@@ -6,11 +6,16 @@ class UserfilesController < ApplicationController
   end
 
   def create
-    @userfile = @profile.userfiles.new(userfile_params)
-    if @userfile.save
-      redirect_to profile_path, notice: 'File uploaded.'
+    total_space_self_user = Userfile.total_space_self_user_method
+    if total_space_self_user >= @profile.space
+      redirect_to profile_path, notice: 'File not uploaded because 10 MB limit exceeded.'
     else
-      render :new
+      @userfile = @profile.userfiles.new(userfile_params)
+      if @userfile.save
+        redirect_to profile_path, notice: 'File uploaded.'
+      else
+        render :new
+      end
     end
   end
 
