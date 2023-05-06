@@ -10,7 +10,6 @@ class UserfilesController < ApplicationController
   end
 
   def create
-    total_space_self_user = Userfile.total_space_self_user_method
     if total_space_self_user >= @profile.space
       redirect_to profile_path, notice: 'File not uploaded because 10 MB limit exceeded.'
     else
@@ -30,6 +29,10 @@ class UserfilesController < ApplicationController
   end
 
   private
+
+  def total_space_self_user
+    Userfile.total_space_self_user_method(@profile.userfiles)
+  end
 
   def userfile_params
     params.require(:userfile).permit(:space, :attachment)
