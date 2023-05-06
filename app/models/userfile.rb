@@ -2,7 +2,7 @@ class Userfile < ApplicationRecord
   belongs_to :profile
   has_one_attached :attachment
 
-  scope :total_space_self_user_method, -> { ActiveStorage::Attachment.joins(:blob).where(record: self).sum(:byte_size).to_i }
+  scope :total_space_self_user_method, ->(object) { ActiveStorage::Attachment.joins(:blob).where(record: object).sum(:byte_size).to_i }
 
   validates :attachment, content_type: {
     in: ['application/zip',

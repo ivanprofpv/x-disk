@@ -29,7 +29,7 @@ class ProfilesController < ApplicationController
   private
 
   def find_profile
-    @profile = Profile.find_by(params[:id])
+    @profile = Profile.find_by(user_id: current_user)
   end
 
   def profile_params

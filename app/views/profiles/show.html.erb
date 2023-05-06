@@ -1,5 +1,5 @@
 <h2>Строка состояния</h2>
-Логин: <%= current_user.username %><p>
+Логин: <%= @profile.user.username %><p>
 
 Доступно: <%= total_space_user %> Mb<p>
 Использовано:  <%= number_to_human_size(total_space_self_user) %><p>
@@ -13,7 +13,7 @@
 <li><%= File.basename(file.attachment.filename.to_s , ".*")%>
 <p><%= link_to 'Download', rails_blob_path(file.attachment, disposition: "attachment"),
        class: "btn btn-primary" %>
-<p><%= button_to 'Delete', profile_userfile_path(file), method: :delete,
+<p><%= button_to 'Delete', userfile_path(file), method: :delete,
        class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></li>
        <br>
 <% end %>

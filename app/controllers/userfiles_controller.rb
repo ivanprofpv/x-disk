@@ -1,6 +1,6 @@
 class UserfilesController < ApplicationController
   before_action :find_profile, only: %i[new create]
-  before_action :find_userfile, only: %i[destroy]
+  before_action :find_userfile, only: %i[destroy show]
 
   def new
     @userfile = Userfile.new
@@ -36,7 +36,7 @@ class UserfilesController < ApplicationController
   end
 
   def find_profile
-    @profile = Profile.find_by(params[:id])
+    @profile = Profile.find_by(user_id: current_user)
   end
 
   def find_userfile
