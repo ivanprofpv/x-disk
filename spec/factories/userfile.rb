@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :userfile do
-    references { "" }
+    association :profile
   end
 end
