@@ -13,7 +13,7 @@
 <li><%= File.basename(file.attachment.filename.to_s , ".*")%>
 <p><%= link_to 'Download', rails_blob_path(file.attachment, disposition: "attachment"),
        class: "btn btn-primary" %>
-<p><%= button_to 'Delete', userfile_path(file), method: :delete,
+<p><%= link_to 'Delete', userfile_path(file), method: :delete,
        class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></li>
        <br>
 <% end %>

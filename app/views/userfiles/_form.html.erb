@@ -1,4 +1,4 @@
-<%= form_with model: [@profile, @userfile], local: false do |f| %>
+<%= form_with model: [@profile, @userfile], local: true do |f| %>
   <div class="errors">
     <%= render 'shared/errors', resource: @userfile %>
   </div>
