@@ -6,15 +6,16 @@
 #
 default: &default
   adapter: postgresql
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  pool: 5
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host:     <%= ENV['DB_HOST'] %>
   encoding: unicode
 
 development:
   <<: *default
   database: disk_development
-  # host: 127.0.0.1
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -22,9 +23,6 @@ development:
 test:
   <<: *default
   database: disk_test
-  # username: "postgres"
-  # password:
-  # host: 127.0.0.1
 
 production:
   <<: *default
